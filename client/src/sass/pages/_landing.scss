@@ -1,0 +1,27 @@
+.section-landing {
+  padding: 15rem 0;
+  position: relative;
+
+  display: grid;
+
+  grid-template-rows: 20vh 32vh;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 1rem;
+  grid-row-gap: 2rem;
+  align-items: center;
+  justify-items: center;
+
+  &__heading {
+    grid-column: 1 / -1;
+  }
+
+  &__signin {
+    grid-column: 2 / 3;
+    //align-self: start;
+  }
+
+  &__register {
+    grid-column: 3 / 4;
+    //align-self: start;
+  }
+}

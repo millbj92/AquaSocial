@@ -1,0 +1,16 @@
+.post {
+  &__icon {
+    fill: $color-red;
+    height: 3rem;
+    width: 3rem;
+    transform: scale(1);
+    transform: translateY(0);
+    transition: all 0.2s;
+    background-color: transparent;
+
+    &:hover {
+      transform: scale(1.2);
+      transform: translateY(-3px);
+    }
+  }
+}

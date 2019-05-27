@@ -1,0 +1,26 @@
+.alert {
+  width: 45%;
+  padding: 1rem;
+  background-color: $color-white;
+  text-align: center;
+  color: $color-white;
+  box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+  border-radius: 1rem;
+  font-size: 1.6rem;
+  font-family: inherit;
+  transition: all 0.3s;
+
+  &-danger {
+    background-color: $color-red;
+    color: $color-white;
+  }
+
+  &-success {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+
+  &-invisible {
+    opacity: 0;
+  }
+}
