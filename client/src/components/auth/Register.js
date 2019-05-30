@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
 import MdContact from 'react-ionicons/lib/MdContact';
 import PropTypes from 'prop-types';
 import Alert from '../layout/Alert';
 
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -40,10 +42,17 @@ const Register = ({ setAlert }) => {
   const onSubmit = async e => {
     e.preventDefault();
 
-    if (password !== password2) {
-      setAlert('Passwords do not match!', 'danger');
-    }
+    register({
+      name,
+      email,
+      password
+    });
   };
+
+  //Redirect if logged in
+  if (isAuthenticated) {
+    return <Redirect to='/' />;
+  }
   return (
     <section className='register'>
       <div className='register__heading lead'>
@@ -94,7 +103,7 @@ const Register = ({ setAlert }) => {
             value={password}
             ref={el => (passwordInput = el)}
             onChange={e => onChange(e)}
-            required
+            minLength='8'
           />
           <label htmlFor='password' className='form__label'>
             Password
@@ -111,7 +120,7 @@ const Register = ({ setAlert }) => {
             value={password2}
             ref={el => (password2Input = el)}
             onChange={e => onChange(e)}
-            required
+            minLength='8'
           />
           <label htmlFor='password2' className='form__label'>
             Confirm Password
@@ -129,10 +138,16 @@ const Register = ({ setAlert }) => {
 };
 
 Register.propTypes = {
-  setAlert: PropTypes.func.isRequired
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
 };
 
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
 export default connect(
-  null,
-  { setAlert }
+  mapStateToProps,
+  { setAlert, register }
 )(Register);

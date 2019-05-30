@@ -1,0 +1,8 @@
+.section-home {
+  display: grid;
+  background-color: $color-grey-light-1;
+  grid-template-columns: [sidebar-start] 25rem [sidebar-end] 35vw 1fr;
+  grid-gap: 5rem;
+  padding: 1rem 30rem;
+  justify-items: stretch;
+}

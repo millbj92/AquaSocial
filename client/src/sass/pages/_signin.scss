@@ -3,7 +3,7 @@
   background-color: $color-grey-light-1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr 65vh;
+  grid-template-rows: 1fr min-content min-content 1.6fr;
   justify-items: center;
   grid-row-gap: 10rem;
 
